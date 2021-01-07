@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>게시글 상세 화면</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+	<div class="container">
+		<h2>게시글 상세 화면</h2>
+	    <form id="frm" method="post">
+	    	<table class="board_detail">
+				<colgroup>
+					<col width="15%"/>
+					<col width="35%"/>
+					<col width="15%"/>
+					<col width="35%"/>
+				</colgroup>
+				<caption>게시글 상세내용</caption>
+				<tbody>
+					<tr>
+						<th scope="row">글 번호</th>
+						<td th:text="${board.board_idx }"></td>
+						<th scope="row">조회수</th>
+						<td th:text="${board.hit_cnt }"></td>
+					</tr>
+					<tr>
+						<th scope="row">작성자</th>
+						<td th:text="${board.creator_id }"></td>
+						<th scope="row">작성일</th>
+						<td th:text="${board.created_datetime }"></td>
+					</tr>
+					<tr>
+						<th scope="row">제목</th>
+						<td colspan="4" th:text="${board.title }"id="title" name="title"/></td>
+					</tr>
+					<tr>
+						<td colspan="4" id="contents" name="contents" th:text="${board.contents }"></td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="hidden" id="board_idx" name="board_idx" th:value="${board.board_idx }">
+		
+		
+		<a href="#this" id="list" class="btn">목록으로</a>
+		<a href="javascript:void(0)" id="edit" class="btn" onclick="goUpdatePage()">수정하기</a>
+		<a href="#this" id="delete" class="btn">삭제하기</a>
+	</form>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		var idx = null;
+		$(document).ready(function(){
+			$("#list").on("click", function(){
+				location.href = "/board/openBoardList.do";
+			});
+			
+			//$("#edit").on("click", function(){
+				//var frm = $("#frm")[0];
+				//frm.action = "/board/updateBoard.do";
+				//frm.submit();
+			//});
+			
+			$("#delete").on("click", function(){
+				var frm = $("#frm")[0];
+				frm.action = "/board/deleteBoard.do";
+				frm.submit();
+			});
+		});
+		
+		function goUpdatePage(){
+			idx = $("#board_idx").val();
+			location.href = "/board/openBoardEdit.do?board_idx="+idx;
+		};
+	</script>
+</body>
+</html>
