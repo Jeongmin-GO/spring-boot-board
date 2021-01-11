@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>signup page</title>
+</head>
+<body>
+	<div class="container">
+	<h2>회원가입</h2>
+	<form id="frm" name="frm" method="get" action="/signup/insertMember.do">
+		<div class="sign_up">
+			<b>아이디</b><br>
+            <input type="text" id="userid" maxlength="20" name="userid"/><br>
+            <b>비밀번호</b><br>
+            <input type="password" id="userpwd" maxlength="40" name="userpwd" /><br>
+            <b>이름</b><br>
+            <input type="text" id="username" name="username"/> <br>
+            <b>이메일</b> <br>
+            <input type="text" id="email" name="email"/> <br>
+            <input type="submit" id="submit" value="가입완료" class="btn">
+            
+		</div>
+	</form>
+	</div>
+</body>
+</html>
