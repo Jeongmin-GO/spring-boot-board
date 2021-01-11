@@ -8,7 +8,7 @@
 <body>
 	<div class="container">
 		<h2>회원가입</h2>
-		<form id="frm" name="frm" method="post" action="/signup/insertMember.do">
+		<form id="frm" name="frm" method="post">
 			<div class="sign_up">
 				<input type="hidden" id="permission" name="permission" value=""/>
 				<b>아이디</b><br>
@@ -20,7 +20,7 @@
 				<b>이름</b><br>
 				<input type="text" id="username" name="username" /><br>
 				<b>이메일</b> <br> <input type="text" id="email" name="email" /> <br>
-				<input type="submit" id="submit" value="가입완료" class="btn">
+				<input type="submit" id="submit" value="가입완료" class="btn" onclick="signupFin()">
 			</div>
 		</form>
 		<script
@@ -56,6 +56,12 @@
 					}
 				})
 			})
+			
+			function signupFin() {
+				var frm = $("#frm")[0];
+				frm.action = "/signup/insertMember.do";
+				//frm.submit();
+			};
 		</script>
 	</div>
 </body>
