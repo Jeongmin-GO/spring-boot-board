@@ -17,6 +17,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+//@RequestMapping(value={"/","/board/openBoardList.do"})
 	@RequestMapping("/board/openBoardList.do")
 	public ModelAndView openBoardList() throws Exception{
 		ModelAndView mv = new ModelAndView("/board/boardList");
