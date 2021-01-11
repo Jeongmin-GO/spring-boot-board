@@ -9,4 +9,5 @@ public class MemberDto {
 	private String username;
 	private String email;
 	private String rdate;
+	private String permission;
 }

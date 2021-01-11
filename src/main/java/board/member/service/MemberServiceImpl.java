@@ -1,5 +1,7 @@
 package board.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void insertMember(MemberDto member) throws Exception{
 		memberMapper.insertMember(member);
+	}
+	
+	@Override
+	public int idChk(MemberDto member) throws Exception{
+		return memberMapper.idChk(member);
 	}
 }
