@@ -1,6 +1,8 @@
 package board.member.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +24,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int idChk(MemberDto member) throws Exception{
 		return memberMapper.idChk(member);
+	}
+	
+	@Override
+	public MemberDto login(MemberDto member) throws Exception{
+		return memberMapper.login(member);
 	}
 }

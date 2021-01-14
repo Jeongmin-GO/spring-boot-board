@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/style.css}"/>
+<title>LOGIN</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	function checkLogin(){
+		var userid = $('#userid').val();
+		var userpwd = $('#userpwd').val();
+		/* if(!userid){
+			alert("아이디를 입력해주세요");
+		}else if(!userpwd){
+			alert("비밀번호를 입력해주세요");
+		} */
+		
+		$.ajax({
+			/* async : true, */
+			type : 'POST',
+			url : "/login.do",
+			dataType : "json",
+			//contentType : "application/json; charset=UTF-8",
+			data : {
+				'userid' : userid,
+				'userpwd' : userpwd
+			},
+			success : function(data) {
+				alert("success!!");
+			},
+			error : function(error) {
+				alert("error : " + error);
+			}
+		});
+		
+	} 
+	
+	</script>
+
+</head>
+<body id="login_body">
+	<div class="login_container">
+		<form id="frm" name="frm" method="post" action="/login.do"> <!-- action="login" -->
+			<div class="login_box">
+			<h2>로그인</h2>
+			<b>아이디</b><br>
+			<input type="text" id="userid" maxlength="20" name="userid" placeholder="ID"/><br>
+			<b>비밀번호</b><br>
+			<input type="password" id="userpwd" maxlength="40" name="userpwd" placeholder="PASSWORD"/><br>
+			<input type="submit" id="loginbtn" class="btn" value="Login"/>
+			<!-- <input type="submit" id="loginbtn" class="btn" value="login" onclick="checkLogin()" /> -->
+			<input type="button" class="btn" value="회원가입" onclick="location.href='/signup'"/>
+			</div>
+		</form>
+		
+	</div>
+	
+	
+</body>
+</html>
+
